@@ -2,18 +2,18 @@
 
 **Codex 智能调速**：根据任务、等待价值和实际收益，自动选择 Fast 或 Standard。
 
-本项目基于 [wei-er582/codex-auto-orchestrator](https://github.com/wei-er582/codex-auto-orchestrator) 修改，保留原项目的 MIT 许可证和作者署名。上游基线提交：`b3b789d0a05a8c295da32c27c43893fbcd731b87`。本地构建版本：`0.2.0+local.20261018`。
+本项目基于 [wei-er582/codex-auto-orchestrator](https://github.com/wei-er582/codex-auto-orchestrator) 修改，保留原项目的 MIT 许可证和作者署名。上游基线提交：`b3b789d0a05a8c295da32c27c43893fbcd731b87`。本地构建版本：`0.2.1+fastpilot.20261018`。
 
-**本仓库存放分发包；完整源码、技能、文档和测试均在 ZIP 内。**
+**本仓库存放分发包；完整源码、技能、文档和测试均在 ZIP 内。插件标识、技能名称、命令入口和压缩包均使用 FastPilot 命名。**
 
 ## 下载
 
-- [完整安装包（含源码与测试）](https://github.com/daidai1215/codex-fastpilot/raw/refs/heads/main/codex-auto-orchestrator-adaptive-v0.2.0-20261018.zip)
-- [相对上游的运行代码补丁](adaptive-material-planning.patch)
+- [完整安装包（含源码与测试）](https://github.com/daidai1215/codex-fastpilot/raw/refs/heads/main/codex-fastpilot-v0.2.1-20261018.zip)
+- [相对上游的运行代码补丁](codex-fastpilot.patch)
 - [SHA-256 校验值](SHA256SUMS.txt)
 - [发布说明](RELEASE_NOTES.md)
 
-补丁对应自适应运行逻辑、文档、测试和版本号；ZIP 另外包含本次分发所需的本地插件市场目录。
+补丁包含相对上游的功能修改、完整命名迁移与分发元数据；ZIP 可直接解压安装。
 
 ## 增加的三个规则
 
@@ -29,16 +29,14 @@
 
 ## 安装
 
-项目名称为 Codex FastPilot；插件标识、包内目录及原安装包文件名沿用已有名称，安装命令保持兼容。
-
 需要 Python 3.11+、已配置并登录的 Codex CLI，以及当前账号可用的相应模型。
 
-1. 下载 ZIP，解压得到 `codex-auto-orchestrator` 文件夹。
+1. 下载 ZIP，解压得到 `codex-fastpilot` 文件夹。
 2. 注册解压后的本地插件市场，再安装插件。以下路径应替换为你实际解压的位置：
 
 ```powershell
-codex plugin marketplace add "C:/path/to/codex-auto-orchestrator"
-codex plugin add codex-auto-orchestrator@codex-auto-orchestrator-adaptive
+codex plugin marketplace add "C:/path/to/codex-fastpilot"
+codex plugin add codex-fastpilot@codex-fastpilot
 ```
 
 3. 重启 Codex 并在新对话中使用。首次运行沿用原有速度矩阵设置流程，需要保存一个命名配置作为默认值；本包不包含任何机器的个人配置。
@@ -51,12 +49,24 @@ codex plugin add codex-auto-orchestrator@codex-auto-orchestrator-adaptive
 
 自动匹配由模型根据任务判断，不保证每条消息都调用该技能。已开始的编排作业会在后续调用中持续应用选档规则。
 
+## 本地名称
+
+| 项目 | 名称 |
+| --- | --- |
+| 源码 / 解压目录 | `codex-fastpilot/` |
+| 插件标识 | `codex-fastpilot` |
+| 技能目录与调用 | `skills/codex-fastpilot/`、`$codex-fastpilot` |
+| 命令入口 | `scripts/run_fastpilot.py` |
+| Python 包 | `scripts/fastpilot/` |
+| 运行配置与记录 | `~/.codex/fastpilot/` |
+| 环境变量前缀 | `CODEX_FASTPILOT_` |
+
 ## 手工调用与材料清单
 
 在解压后的插件根目录运行：
 
 ```powershell
-python scripts/orchestrate.py start --workspace "C:/project" --task-file "C:/input/task.txt" --wait-value blocking
+python scripts/run_fastpilot.py start --workspace "C:/project" --task-file "C:/input/task.txt" --wait-value blocking
 ```
 
 后台任务使用 `--wait-value background`。如果规划需要读取用户材料，再传入 `--materials-file "C:/input/materials.json"`。该文件示例：
@@ -87,7 +97,7 @@ python scripts/orchestrate.py start --workspace "C:/project" --task-file "C:/inp
 - 117 项本地自动化测试通过，使用 `fake_codex`；未用真实模型做速度或计费基准测试。
 - 技能格式、Python 编译和 20 份托管文档检查通过。
 - 补丁已在上游原始源码上通过 `git apply --check --whitespace=error-all`，应用后逐文件核对。
-- 分发包以已验证、已安装的版本为来源；本次打包保持全部已有运行文件不变，只增加本地市场分发元数据。
+- 本次版本将插件、技能、CLI、Python 包、schema 和状态目录统一改名，并重新运行完整本地测试；速度选择逻辑保留。
 
 解压后可在插件根目录复现本地测试：
 
