@@ -1,13 +1,18 @@
-# 发布说明 — 2026-10-18
+# Codex FastPilot v0.2.1 — 2026-10-18
 
-版本：0.2.0+local.20261018
+本次完成本地完整更名后重新发布。
 
-本分发包保留 Codex Auto Orchestrator 的原有编排流程，增加等待价值选档、保守的已观察收益降档，以及按输入材料决定规划是否使用 Standard 的规则。
+- 源码与解压目录：`codex-fastpilot/`
+- 插件与市场：`codex-fastpilot@codex-fastpilot`
+- 技能目录与调用：`skills/codex-fastpilot/`、`$codex-fastpilot`
+- 命令入口：`scripts/run_fastpilot.py`
+- Python 包：`scripts/fastpilot/`
+- 运行配置：`~/.codex/fastpilot/`
+- 环境变量前缀：`CODEX_FASTPILOT_`
+- 安装包：`codex-fastpilot-v0.2.1-20261018.zip`
+- 补丁：`codex-fastpilot.patch`
 
-材料规则要求同时满足：规划需要读材料；图片超过 5 张或存在非图片附件。其他规划保留原方案。执行阶段继续自适应选档，不强制开启 Fast。显式 all-fast/follow-entry 保留优先级。
+等待价值、实际收益和读材料规划三项选档逻辑保持。更名后的完整本地模拟测试 117 项通过，用时 165.158 秒；没有进行真实模型速度或计费基准测试。
 
-ZIP 包含完整源码、测试、技能和本地插件市场目录。补丁可应用至上游提交 b3b789d0a05a8c295da32c27c43893fbcd731b87，ZIP 另含分发市场元数据。根目录 LICENSE 保留原始 MIT 版权。
-
-已有验证：117 项模拟模型本地测试通过、Python 编译检查、技能格式、20 份托管文档检查与补丁应用检查。此次打包以逐文件哈希验证原有文件没有改动；没有声称真实模型的速度或计费收益得到验证。
-
-不包含个人配置、凭据、运行日志、安装收据或会话历史。模型请求档位由调用前确定；不支持同一请求中途按 token 阶段切换。
+原 MIT 许可证与上游署名保留。[来源说明](https://github.com/wei-er582/codex-auto-orchestrator)；包内 UPSTREAM.md 与历史发布记录说明派生关系。
+补丁可在上游提交 b3b789d0a05a8c295da32c27c43893fbcd731b87 上应用，已逐文件核对还原结果。
