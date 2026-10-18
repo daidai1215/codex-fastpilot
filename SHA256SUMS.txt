@@ -1,2 +1,2 @@
-86e9cde0a9f16a101b17d99a41712094c059f98773d9dff7a1ec349800a77c60  codex-auto-orchestrator-adaptive-v0.2.0-20261018.zip
-650b3e5a91d51ae81a0a87396cb139370b0aaac134f11fcfd23e43ab3486d563  adaptive-material-planning.patch
+382977e94894885994d6199c5e0cc34918ff76958b1fc5d8f0fd1871e5a35384  codex-fastpilot-v0.2.1-20261018.zip
+d7677d8d4e1c61e0c6b287eff8ca3563ed3f11957e7a02699e5efecb092bfc6c  codex-fastpilot.patch
