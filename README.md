@@ -1,6 +1,6 @@
-# Codex Auto Orchestrator Adaptive
+# Codex FastPilot
 
-Codex Fast / Standard 自适应选档插件安装包。
+**Codex 智能调速**：根据任务、等待价值和实际收益，自动选择 Fast 或 Standard。
 
 本项目基于 [wei-er582/codex-auto-orchestrator](https://github.com/wei-er582/codex-auto-orchestrator) 修改，保留原项目的 MIT 许可证和作者署名。上游基线提交：`b3b789d0a05a8c295da32c27c43893fbcd731b87`。本地构建版本：`0.2.0+local.20261018`。
 
@@ -8,7 +8,7 @@ Codex Fast / Standard 自适应选档插件安装包。
 
 ## 下载
 
-- [完整安装包（含源码与测试）](https://github.com/daidai1215/codex-auto-orchestrator-adaptive/raw/refs/heads/main/codex-auto-orchestrator-adaptive-v0.2.0-20261018.zip)
+- [完整安装包（含源码与测试）](https://github.com/daidai1215/codex-fastpilot/raw/refs/heads/main/codex-auto-orchestrator-adaptive-v0.2.0-20261018.zip)
 - [相对上游的运行代码补丁](adaptive-material-planning.patch)
 - [SHA-256 校验值](SHA256SUMS.txt)
 - [发布说明](RELEASE_NOTES.md)
@@ -28,6 +28,8 @@ Codex Fast / Standard 自适应选档插件安装包。
 保留原有规划、任务拆分、模型及推理等级、复核和重试流程；没有加入“减少编排开销”的跳过规划功能。
 
 ## 安装
+
+项目名称为 Codex FastPilot；插件标识、包内目录及原安装包文件名沿用已有名称，安装命令保持兼容。
 
 需要 Python 3.11+、已配置并登录的 Codex CLI，以及当前账号可用的相应模型。
 
